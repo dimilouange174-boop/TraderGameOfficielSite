@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trader Game - Site Officiel</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0b0e11; 
+            color: #eaecef;
+            scroll-behavior: smooth;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #161a1e;
+            border-bottom: 1px solid #2b3139;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #02c076; 
+        }
+        .logo span {
+            color: #ffffff;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li a {
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #02c076;
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(180deg, #161a1e 0%, #0b0e11 100%);
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #848e9c;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+        .cta-btn {
+            background-color: #02c076;
+            color: #ffffff;
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .cta-btn:hover {
+            background-color: #03a667;
+        }
+        section.content-section {
+            padding: 80px 8%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        section.content-section h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        section.content-section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #02c076;
+            margin: 10px auto 0 auto;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: #161a1e;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #2b3139;
+        }
+        .card h3 {
+            color: #02c076;
+            margin-top: 0;
+        }
+        .card p {
+            color: #848e9c;
+            line-height: 1.6;
+        }
+        .dev-container {
+            background-color: #161a1e;
+            border: 1px solid #2b3139;
+            border-radius: 8px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .dev-avatar {
+            width: 120px;
+            height: 120px;
+            background-color: #2b3139;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            border: 3px solid #02c076;
+            flex-shrink: 0;
+        }
+        .dev-text h3 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+        .dev-text p {
+            color: #848e9c;
+            line-height: 1.6;
+        }
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #161a1e;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #2b3139;
+        }
+        .info-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #2b3139;
+        }
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+        .info-table td.label {
+            font-weight: bold;
+            color: #02c076;
+            width: 30%;
+        }
+        .info-table td.value {
+            color: #eaecef;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #161a1e;
+            border-top: 1px solid #2b3139;
+            color: #848e9c;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .dev-container { flex-direction: column; text-align: center; }
+            header { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Trader<span>Game</span></div>
+        <nav>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#jeu">Le Jeu</a></li>
+                <li><a href="#developpeur">Le Développeur</a></li>
+                <li><a href="#infos">Infos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="accueil">
+        <h1>Trader Game</h1>
+        <p>Plongez au cœur des marchés financiers. Achetez, vendez et spéculez en temps réel pour bâtir votre empire économique et devenir le trader le plus riche du monde.</p>
+        <!-- REMPLACEZ l'adresse ci-dessous par votre vrai lien Itch.io si vous l'avez déjà -->
+        <a href="https://itch.io" target="_blank" class="cta-btn">Télécharger sur Itch.io</a>
+    </section>
+
+    <section class="content-section" id="jeu">
+        <h2>À propos du Jeu</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>📊 Marché Dynamique</h3>
+                <p>Suivez l'évolution des cours en temps réel. Analysez les tendances graphiques et prenez des décisions chirurgicales pour maximiser vos profits.</p>
+            </div>
+            <div class="card">
+                <h3>💼 Gestion d'Actifs</h3>
+                <p>Diversifiez vos investissements : actions d'entreprises, cryptomonnaies ou matières premières. Gérez le risque pour ne pas faire faillite.</p>
+            </div>
+            <div class="card">
+                <h3>🚀 De Zéro à Milliardaire</h3>
+                <p>Commencez votre carrière avec un capital minimal. Multipliez vos gains pour débloquer des bureaux de trading prestigieux et de nouveaux marchés.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="developpeur">
+        <h2>Le Développeur</h2>
+        <div class="dev-container">
+            <div class="dev-avatar">👨‍💻</div>
+            <div class="dev-text">
+                <h3>Créé par un passionné</h3>
+                <p>Bonjour ! Je suis le développeur indépendant derrière <strong>Trader Game</strong>. Passionné par les mécaniques économiques et le développement de jeux de stratégie, j'ai conçu ce projet pour offrir une simulation financière à la fois accessible, réaliste et stressante. Le jeu est en constante évolution, alors n'hésitez pas à me faire part de vos retours et suggestions sur Itch.io pour m'aider à l'améliorer !</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="infos">
+        <h2>Informations Techniques</h2>
+        <table class="info-table">
+            <tr>
+                <td class="label">Version Actuelle</td>
+                <td class="value">v1.0.0</td>
+            </tr>
+            <tr>
+                <td class="label">Plateforme</td>
+                <td class="value">PC / Windows</td>
+            </tr>
+            <tr>
+                <td class="label">Configuration Requise</td>
+                <td class="value">Configuration légère — Fonctionne sur n'importe quel ordinateur moderne.</td>
+            </tr>
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Trader Game. Tous droits réservés. Développé avec passion.</p>
+    </footer>
+
+</body>
+  </html>
