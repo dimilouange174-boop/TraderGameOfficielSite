@@ -1,70 +1,140 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Trader Game - Site Officiel</title><style>
-body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #1a1d24; color: #e1e6eb; scroll-behavior: smooth; }
-a { text-decoration: none; color: inherit; }
-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: #1a1d24; box-shadow: inset 0 -3px 6px rgba(0,0,0,0.4), inset 0 3px 6px rgba(255,255,255,0.04); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 15px; }
-.logo { font-size: 24px; font-weight: bold; color: #00e676; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
-.logo span { color: #ffffff; }
-nav ul { list-style: none; display: flex; gap: 12px; margin: 0; padding: 0; flex-wrap: wrap; justify-content: center; }
-nav ul li a { padding: 8px 12px; border-radius: 10px; background: #1a1d24; box-shadow: -3px -3px 8px rgba(255,255,255,0.05), 3px 3px 8px rgba(0,0,0,0.5); transition: all 0.2s ease; font-size: 14px; white-space: nowrap; display: inline-block; }
-nav ul li a:hover { color: #00e676; box-shadow: inset -2px -2px 5px rgba(255,255,255,0.05), inset 2px 2px 5px rgba(0,0,0,0.5); }
-.hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 60px 20px; }
-.hero h1 { font-size: 40px; margin: 0 0 15px; color: #fff; text-shadow: 3px 3px 6px rgba(0,0,0,0.6); }
-.hero p { font-size: 16px; color: #9ba3af; max-width: 600px; margin: 0 0 40px; line-height: 1.6; }
-.btn-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-.cta-btn { color: #00e676; padding: 14px 30px; font-size: 16px; font-weight: bold; border-radius: 16px; background: #1a1d24; box-shadow: -5px -5px 12px rgba(255,255,255,0.05), 5px 5px 12px rgba(0,0,0,0.6); transition: all 0.2s ease; display: inline-block; }
-.cta-btn:hover { box-shadow: inset -4px -4px 10px rgba(255,255,255,0.05), inset 4px 4px 10px rgba(0,0,0,0.6); color: #00b359; }
-.cta-btn.mediafire { color: #29b6f6; }
-.cta-btn.mediafire:hover { color: #0288d1; }
-section.content-section { padding: 40px 5%; max-width: 1100px; margin: 0 auto; }
-section.content-section h2 { text-align: center; font-size: 26px; margin-bottom: 40px; color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.4); }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.card, .dev-container, .faq-item, .info-table { background: #1a1d24; padding: 30px; border-radius: 24px; box-shadow: -5px -5px 12px rgba(255,255,255,0.04), 5px 5px 12px rgba(0,0,0,0.5); }
-.card h3 { color: #00e676; margin: 0 0 15px; }
-.card p, .dev-text p, .faq-item p { color: #a0a5b0; line-height: 1.7; margin: 0; }
-.dev-container { display: flex; align-items: center; gap: 30px; margin-bottom: 25px; }
-.dev-avatar { width: 90px; height: 90px; background: #1a1d24; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; box-shadow: inset -4px -4px 10px rgba(255,255,255,0.05), inset 4px 4px 10px rgba(0,0,0,0.6); flex-shrink: 0; }
-.dev-text h3, .faq-item h3 { margin: 0 0 15px; font-size: 20px; color: #ffffff; }
-.faq-item { margin-bottom: 25px; }
-.info-table { width: 100%; border-collapse: collapse; padding: 10px; }
-.info-table td { padding: 18px; border-bottom: 1px solid rgba(0,0,0,0.2); }
-.info-table tr:last-child td { border-bottom: none; }
-.info-table td.label { font-weight: bold; color: #00e676; width: 40%; }
-footer { text-align: center; padding: 30px 20px; margin-top: 40px; box-shadow: inset 0 3px 6px rgba(0,0,0,0.4); color: #64748b; font-size: 13px; }
-@media(max-width: 768px) { header { flex-direction: column; text-align: center; padding: 15px 5%; } nav ul { gap: 8px; } .dev-container { flex-direction: column; text-align: center; } .hero h1 { font-size: 32px; } }
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><title>Trader Game - Site Officiel</title><style>
+:root{
+  --text:#fff;--muted:rgba(255,255,255,.86);--accent:#9ff5c9;
+  --glass:linear-gradient(135deg,rgba(255,255,255,.24),rgba(255,255,255,.05) 55%,rgba(255,255,255,.14));
+  --blur:blur(22px) saturate(180%) brightness(1.08);
+  --edge:inset 1.5px 1.5px 1px rgba(255,255,255,.8),inset -1px -1px 1px rgba(255,255,255,.3),inset 0 0 16px rgba(255,255,255,.12),0 12px 36px rgba(20,10,60,.3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,'SF Pro Display','Segoe UI',system-ui,sans-serif;color:var(--text);line-height:1.6;background:#3a2bb8;min-height:100vh;overflow-x:hidden;text-shadow:0 1px 14px rgba(20,10,70,.35)}
+/* Fond net (grille + disques aux bords francs) : c'est ce que la lentille de verre vient déformer */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(160deg,#2a5bff 0%,#7b3fe4 45%,#ff5fa2 100%)}
+.bg::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.16) 0 1px,transparent 1px 44px),repeating-linear-gradient(90deg,rgba(255,255,255,.16) 0 1px,transparent 1px 44px)}
+.bg i{position:absolute;border-radius:50%;animation:drift 26s ease-in-out infinite alternate}
+.bg i:nth-child(1){width:44vmax;height:44vmax;left:-12vmax;top:-10vmax;background:radial-gradient(circle at 35% 35%,#38f0b4,#1fb6ff)}
+.bg i:nth-child(2){width:34vmax;height:34vmax;right:-8vmax;top:30vh;background:radial-gradient(circle at 40% 40%,#ffd36b,#ff7a59);animation-duration:32s}
+.bg i:nth-child(3){width:30vmax;height:30vmax;left:22vw;bottom:-12vmax;background:radial-gradient(circle at 40% 40%,#c28bff,#5a4bff);animation-duration:38s}
+@keyframes drift{to{transform:translate(6vmax,4vmax) scale(1.06)}}
+a{text-decoration:none;color:inherit}
+:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+/* Matière verre (version de repli : flou classique) */
+.glass{position:relative;background-color:rgba(30,20,90,.14);background-image:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);box-shadow:var(--edge);border:1px solid rgba(255,255,255,.24)}
+.glass::before,.glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none}
+.glass::before{background:linear-gradient(180deg,rgba(255,255,255,.35),transparent 38%);opacity:.5;mix-blend-mode:overlay}
+/* Reflet spéculaire qui suit le curseur */
+.glass::after{background:radial-gradient(circle 130px at var(--mx,50%) var(--my,50%),rgba(255,255,255,.42),transparent 70%);opacity:0;transition:opacity .3s;mix-blend-mode:soft-light}
+.glass:hover::after{opacity:1}
+
+header.glass{position:sticky;top:max(12px,env(safe-area-inset-top));z-index:100;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;width:min(920px,calc(100% - 24px));margin:12px auto 0;padding:8px 10px 8px 22px;border-radius:999px}
+.logo{font-size:18px;font-weight:600;letter-spacing:-.2px}.logo span{color:var(--accent)}
+nav ul{position:relative;list-style:none;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;margin:0;padding:0;flex-wrap:nowrap;justify-content:center;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+nav a{position:relative;z-index:1;display:block;text-align:center;padding:8px 14px;border-radius:999px;font-size:14px;font-weight:500;color:var(--muted);white-space:nowrap;transition:color .3s}
+nav a:hover,nav a.active{color:#fff}
+/* Pastille de verre : glisse d'un onglet à l'autre, se laisse attraper et déplacer */
+.pill{position:absolute;left:0;top:0;height:100%;width:0;z-index:0;pointer-events:none;transition:transform .6s cubic-bezier(.3,1.45,.5,1),width .6s cubic-bezier(.3,1.45,.5,1)}
+.pill i{display:block;width:100%;height:100%;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,.14));box-shadow:inset 1.5px 1.5px 1px rgba(255,255,255,.9),inset -1px -1px 1px rgba(255,255,255,.35),0 4px 14px rgba(20,10,60,.28);transition:transform .35s cubic-bezier(.3,1.6,.5,1),background .3s}
+.pill i.press,.pill i.drag{transform:scale(1.14,1.24);background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.22))}
+.pill i.squish{animation:squish .6s cubic-bezier(.3,1.4,.5,1)}
+@keyframes squish{0%{transform:scale(1)}30%{transform:scale(1.18,.9)}65%{transform:scale(.97,1.08)}100%{transform:scale(1)}}
+
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:72px 20px 64px}
+.hero h1{font-size:clamp(44px,8vw,78px);font-weight:700;letter-spacing:-.04em;line-height:1.02;margin:0 0 18px;text-shadow:0 4px 30px rgba(30,10,90,.4)}
+.hero p{max-width:540px;margin:0 0 32px;font-size:18px;color:var(--muted)}
+.btn-container{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;min-width:176px;height:52px;padding:0 28px;border-radius:999px;font-weight:600;font-size:16px;transition:transform .25s cubic-bezier(.3,1.5,.5,1)}
+.cta-btn:hover{transform:scale(1.06)}
+.cta-btn:active{transform:scale(.97)}
+
+section.content-section{max-width:1000px;margin:0 auto;padding:56px 20px;scroll-margin-top:90px}
+@media(max-width:480px){nav a{font-size:12.5px;padding:8px 8px}nav ul{grid-auto-columns:auto}}
+h2{text-align:center;font-size:32px;font-weight:700;letter-spacing:-.03em;margin:0 0 32px}
+.grid,.stats,.faq-grid{display:grid;gap:20px;grid-template-columns:1fr}
+@media(min-width:900px){.grid,.stats{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:700px){.faq-grid{grid-template-columns:repeat(2,1fr)}}
+.card,.dev-container,.faq-item,.stat{border-radius:28px;padding:28px}
+.card{display:flex;flex-direction:column;gap:12px}
+.ico{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;background:rgba(255,255,255,.14);box-shadow:inset 1.5px 1.5px 1px rgba(255,255,255,.7),inset -1px -1px 1px rgba(255,255,255,.2)}
+.card h3{margin:0;font-size:19px;font-weight:600}
+.dev-text h3,.faq-item h3{margin:0 0 8px;font-size:19px;font-weight:600}
+.card p,.dev-text p,.faq-item p{margin:0;color:var(--muted)}
+.dev-container{display:flex;align-items:center;gap:26px}
+.dev-avatar{width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0}
+.stat{display:flex;flex-direction:column;gap:6px}
+.stat span{font-size:14px;color:var(--muted)}
+.stat b{font-size:26px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+.stat p{margin:0;font-size:15px;color:var(--muted)}
+footer{text-align:center;padding:40px 20px 50px;color:var(--muted);font-size:13px}
+
+.up{color:#5cf2b0}.dn{color:#ff7a8c}
+.ticker{display:flex;align-items:center;width:min(920px,calc(100% - 24px));height:44px;margin:12px auto 0;border-radius:999px;overflow:hidden;padding:0 8px 0 18px}
+.tk-label{flex:none;font-size:13px;font-weight:600;color:var(--muted);padding-right:14px;margin-right:6px;border-right:1px solid rgba(255,255,255,.28)}
+.tk-view{flex:1;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent)}
+.tk-track{display:inline-flex;white-space:nowrap;animation:tk 50s linear infinite}
+.tk-view:hover .tk-track{animation-play-state:paused}
+.tk{padding:0 18px;font-size:13px;font-weight:500}.tk em{font-style:normal;opacity:.85;margin:0 4px}
+@keyframes tk{to{transform:translateX(-50%)}}
+.chip{display:inline-flex;align-items:center;flex:none;height:26px;padding:0 10px;border-radius:999px;font-size:13px;font-weight:600;background:rgba(92,242,176,.18);color:#5cf2b0;box-shadow:inset 1px 1px 1px rgba(255,255,255,.4)}
+.chip.dn{background:rgba(255,122,140,.2);color:#ff7a8c}
+.chart{width:min(760px,100%);margin-top:44px;border-radius:28px;padding:24px;text-align:left}
+.ch-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.sym{font-size:14px;font-weight:500;color:var(--muted)}
+.pr{display:flex;align-items:center;gap:12px}.price{font-size:34px;font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.tf{display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(255,255,255,.12)}
+.tf button{font:inherit;font-size:13px;font-weight:600;color:var(--muted);background:none;border:0;border-radius:999px;height:28px;width:44px;cursor:pointer;transition:background .25s,color .25s}
+.tf button.on{background:rgba(255,255,255,.32);color:#fff;box-shadow:inset 1px 1px 1px rgba(255,255,255,.7)}
+.plot{position:relative;height:180px;background:repeating-linear-gradient(0deg,rgba(255,255,255,.14) 0 1px,transparent 1px 45px)}
+.plot svg{width:100%;height:100%;display:block}
+.plot .ln{fill:none;stroke:#5cf2b0;stroke-width:2.5;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.plot .ar{fill:url(#ga);stroke:none}
+.plot.dn .ln{stroke:#ff7a8c}
+.dot{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#5cf2b0;box-shadow:0 0 0 4px rgba(92,242,176,.3),0 0 16px #5cf2b0;transition:left .6s,top .6s}
+.plot.dn .dot{background:#ff7a8c;box-shadow:0 0 0 4px rgba(255,122,140,.3),0 0 16px #ff7a8c}
+.spark{margin-top:auto;padding-top:12px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.spark svg{width:100%;max-width:150px;height:44px}
+.spark path{fill:none;stroke:#5cf2b0;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+@media(prefers-reduced-motion:reduce){.tk-track{animation:none}.dot{transition:none}}
+@media(max-width:768px){header.glass{border-radius:28px;padding:12px;justify-content:center}.dev-container{flex-direction:column;text-align:center}.hero{padding:70px 20px 60px}}
+@media(prefers-reduced-motion:reduce){.bg i{animation:none}*{transition:none!important}html{scroll-behavior:auto}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass{background-color:rgba(70,60,150,.85)}}
 </style></head><body>
-<header><div class="logo">Trader<span>Game</span></div><nav><ul><li><a href="#accueil">Accueil</a></li><li><a href="#jeu">Le Jeu</a></li><li><a href="#developpeur">Développeur</a></li><li><a href="#faq">FAQ</a></li><li><a href="#infos">Infos</a></li></ul></nav></header>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<header class="glass"><div class="logo">Trader<span>Game</span></div><nav><ul><li><a href="#accueil">Accueil</a></li><li><a href="#jeu">Le Jeu</a></li><li><a href="#developpeur">Développeur</a></li><li><a href="#faq">FAQ</a></li><li><a href="#infos">Infos</a></li></ul></nav></header>
+
+<div class="ticker glass"><span class="tk-label">Cours simulés</span><div class="tk-view"><div class="tk-track" id="tkTrack"></div></div></div>
+
 <section class="hero" id="accueil">
     <h1>Trader Game</h1>
     <p>Plongez au cœur des marchés financiers. Achetez, vendez et spéculez en temps réel pour bâtir votre empire économique.</p>
     <div class="btn-container">
-        <a href="https://dimi-louange.itch.io/trader-game" target="_blank" class="cta-btn">Itch.io</a>
-        <a href="https://www.mediafire.com/file/gvpbcusj27zxat8/Trader_Game_4_3.apk/file" target="_blank" class="cta-btn mediafire">Mediafire (APK)</a>
+        <a href="https://dimi-louange.itch.io/trader-game" target="_blank" class="cta-btn glass">Itch.io</a>
+        <a href="https://www.mediafire.com/file/gvpbcusj27zxat8/Trader_Game_4_3.apk/file" target="_blank" class="cta-btn glass">Mediafire (APK)</a>
+    </div>
+    <div class="chart glass">
+        <div class="ch-top">
+            <div><div class="sym">NOVA / USD</div><div class="pr"><span class="price" id="chPrice">—</span><span class="chip" id="chChip">—</span></div></div>
+            <div class="tf" id="chTf"><button data-n="30">1J</button><button data-n="60" class="on">1S</button><button data-n="120">1M</button></div>
+        </div>
+        <div class="plot" id="chPlot"><svg viewBox="0 0 720 180" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><path class="ar" id="chAr"/><path class="ln" id="chLn"/></svg><span class="dot" id="chDot"></span></div>
     </div>
 </section>
 
 <section class="content-section" id="jeu">
     <h2>À propos du Jeu</h2>
     <div class="grid">
-        <div class="card">
-            <h3>📊 Marché Dynamique</h3>
-            <p>Suivez l'évolution des cours en temps réel. Analysez les tendances et prenez des décisions chirurgicales.</p>
-        </div>
-        <div class="card">
-            <h3>💼 Gestion d'Actifs</h3>
-            <p>Diversifiez vos investissements : actions, cryptomonnaies ou matières premières. Gérez le risque.</p>
-        </div>
-        <div class="card">
-            <h3>🚀 De Zéro à Milliardaire</h3>
-            <p>Commencez avec un capital minimal. Multipliez vos gains pour débloquer des bureaux prestigieux.</p>
-        </div>
+        <div class="card glass"><div class="ico">📊</div><h3>Marché Dynamique</h3><p>Suivez l'évolution des cours en temps réel. Analysez les tendances et prenez des décisions chirurgicales.</p><div class="spark"><svg viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L15 26 L30 28 L45 18 L60 22 L75 12 L90 16 L105 6 L120 9"/></svg><span class="chip">+12,4 %</span></div></div>
+        <div class="card glass"><div class="ico">💼</div><h3>Gestion d'Actifs</h3><p>Diversifiez vos investissements : actions, cryptomonnaies ou matières premières. Gérez le risque.</p><div class="spark"><svg viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20 L20 24 L40 14 L60 18 L80 10 L100 14 L120 8"/></svg><span class="chip">3 classes</span></div></div>
+        <div class="card glass"><div class="ico">🚀</div><h3>De Zéro à Milliardaire</h3><p>Commencez avec un capital minimal. Multipliez vos gains pour débloquer des bureaux prestigieux.</p><div class="spark"><svg viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 38 L30 36 L55 32 L75 26 L95 16 L120 2"/></svg><span class="chip">0 → 1 Md</span></div></div>
     </div>
 </section>
 
 <section class="content-section" id="developpeur">
     <h2>Le Développeur</h2>
-    <div class="dev-container">
-        <div class="dev-avatar">👨‍💻</div>
+    <div class="dev-container glass">
+        <div class="dev-avatar glass">👨‍💻</div>
         <div class="dev-text">
             <h3>Créé par un passionné</h3>
             <p>Bonjour ! Je suis le développeur indépendant derrière Trader Game. Passionné par les mécaniques économiques, j'ai conçu ce projet pour offrir une simulation accessible et stratégique. N'hésitez pas à me faire vos retours !</p>
@@ -74,26 +144,236 @@ footer { text-align: center; padding: 30px 20px; margin-top: 40px; box-shadow: i
 
 <section class="content-section" id="faq">
     <h2>Foire aux Questions (FAQ)</h2>
-    <div class="faq-item">
-        <h3>Le jeu est-il gratuit ?</h3>
-        <p>Oui, Trader Game est téléchargeable gratuitement sur nos plateformes officielles.</p>
-    </div>
-    <div class="faq-item">
-        <h3>Sur quels appareils puis-je jouer ?</h3>
-        <p>Le jeu est compatible avec les ordinateurs (PC), ainsi que les téléphones et tablettes.</p>
+    <div class="faq-grid">
+        <div class="faq-item glass"><h3>Le jeu est-il gratuit ?</h3><p>Oui, Trader Game est téléchargeable gratuitement sur nos plateformes officielles.</p></div>
+        <div class="faq-item glass"><h3>Sur quels appareils puis-je jouer ?</h3><p>Le jeu est compatible avec les ordinateurs (PC), ainsi que les téléphones et tablettes.</p></div>
     </div>
 </section>
 
 <section class="content-section" id="infos">
     <h2>Informations Techniques</h2>
-    <table class="info-table">
-        <tr><td class="label">Version Actuelle</td><td>v1.1</td></tr>
-        <tr><td class="label">Plateformes</td><td>PC, Téléphone & Tablette</td></tr>
-        <tr><td class="label">Configuration</td><td>Légère — Fonctionne parfaitement sur tous vos appareils.</td></tr>
-    </table>
+    <div class="stats">
+        <div class="stat glass"><span>Version actuelle</span><b>v1.1</b><p>Disponible sur Itch.io et Mediafire (APK).</p></div>
+        <div class="stat glass"><span>Plateformes</span><b>PC, Téléphone &amp; Tablette</b><p>Ordinateurs, téléphones et tablettes.</p></div>
+        <div class="stat glass"><span>Configuration</span><b>Légère</b><p>Fonctionne parfaitement sur tous vos appareils.</p></div>
+    </div>
 </section>
 
-<footer>
-    <p>&copy; 2026 Trader Game. Tous droits réservés.</p>
-</footer>
+<footer><p>&copy; 2026 Trader Game. Tous droits réservés.</p></footer>
+
+<script>
+/* Reflet qui suit le curseur (tous navigateurs) */
+document.addEventListener("pointermove", function (e) {
+    var g = e.target.closest && e.target.closest(".glass");
+    if (!g) return;
+    var r = g.getBoundingClientRect();
+    g.style.setProperty("--mx", (e.clientX - r.left) + "px");
+    g.style.setProperty("--my", (e.clientY - r.top) + "px");
+});
+
+/* ====== Réfraction réelle (Chrome / Edge / Android Chrome) ======
+   Pour chaque élément en verre, on dessine une carte de déplacement à sa taille exacte :
+   plus on s'approche du bord arrondi, plus l'image derrière est tirée vers l'intérieur.
+   Un filtre SVG (feDisplacementMap) appliqué en backdrop-filter fait le reste.
+   Les autres navigateurs gardent la version « verre dépoli ». */
+(function () {
+    var ua = navigator.userAgent;
+    if (!(/Chrome\//.test(ua) && !/Firefox|FxiOS|CriOS|iPhone|iPad/.test(ua))) return;
+    var NS = "http://www.w3.org/2000/svg";
+    var svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("width", "0"); svg.setAttribute("height", "0"); svg.setAttribute("aria-hidden", "true");
+    svg.style.cssText = "position:absolute;pointer-events:none";
+    document.body.appendChild(svg);
+    var cv = document.createElement("canvas"), cx = cv.getContext("2d");
+
+    function build(el, i) {
+        var w = el.offsetWidth, h = el.offsetHeight;
+        if (w < 8 || h < 8) return;
+        var rv = getComputedStyle(el).borderTopLeftRadius, R = parseFloat(rv) || 0;
+        if (/%/.test(rv)) R = Math.min(w, h) * R / 100;
+        R = Math.min(R, w / 2, h / 2);
+        var b = Math.max(8, Math.min(34, Math.min(w, h) / 2));   // largeur de la zone de courbure
+        cv.width = w; cv.height = h;
+        var img = cx.createImageData(w, h), d = img.data, hw = w / 2, hh = h / 2;
+        for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) {
+            var px = x + .5 - hw, py = y + .5 - hh;
+            var qx = Math.abs(px) - (hw - R), qy = Math.abs(py) - (hh - R);
+            var dep, nx = 0, ny = 0;
+            if (qx > 0 && qy > 0) { var l = Math.hypot(qx, qy); dep = R - l; nx = Math.sign(px) * qx / l; ny = Math.sign(py) * qy / l; }
+            else if (qx > qy) { dep = R - qx; nx = Math.sign(px); }
+            else { dep = R - qy; ny = Math.sign(py); }
+            var t = Math.min(1, Math.max(0, dep / b)), m = Math.pow(1 - t, 2.2);
+            var k = (y * w + x) * 4;
+            d[k] = 128 - nx * m * 127; d[k + 1] = 128 - ny * m * 127; d[k + 2] = 128; d[k + 3] = 255;
+        }
+        cx.putImageData(img, 0, 0);
+        var id = "lg" + i, f = document.getElementById(id);
+        if (!f) {
+            f = document.createElementNS(NS, "filter");
+            f.setAttribute("id", id);
+            f.setAttribute("color-interpolation-filters", "sRGB");
+            f.setAttribute("filterUnits", "userSpaceOnUse");
+            f.innerHTML = '<feImage result="m" preserveAspectRatio="none"/><feDisplacementMap in="SourceGraphic" in2="m" xChannelSelector="R" yChannelSelector="G"/>';
+            svg.appendChild(f);
+        }
+        ["x", "y"].forEach(function (a) { f.setAttribute(a, 0); f.firstChild.setAttribute(a, 0); });
+        f.setAttribute("width", w); f.setAttribute("height", h);
+        f.firstChild.setAttribute("width", w); f.firstChild.setAttribute("height", h);
+        f.firstChild.setAttribute("href", cv.toDataURL());
+        f.lastChild.setAttribute("scale", (b * 1.5).toFixed(1));
+        el.style.backdropFilter = "url(#" + id + ") blur(1.5px) saturate(1.7) brightness(1.1)";
+    }
+
+    var els = [].slice.call(document.querySelectorAll(".glass"));
+    var ro = new ResizeObserver(function (entries) {
+        entries.forEach(function (en) { build(en.target, els.indexOf(en.target)); });
+    });
+    els.forEach(function (el) { ro.observe(el); });
+})();
+</script>
+<script>
+/* ====== Menu façon Apple : pastille qui glisse ======
+   - clic sur un onglet : la pastille glisse (avec un petit effet d'élasticité) et la page défile
+   - tu peux attraper la pastille et la faire glisser jusqu'à une autre section, puis la relâcher
+   - quand tu défiles la page, la pastille suit la section visible */
+(function () {
+    var nav = document.querySelector("nav ul");
+    var links = [].slice.call(nav.querySelectorAll("a"));
+    var secs = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+    var pill = document.createElement("span");
+    pill.className = "pill"; pill.setAttribute("aria-hidden", "true"); pill.innerHTML = "<i></i>";
+    nav.insertBefore(pill, nav.firstChild);
+    var fill = pill.firstChild;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var cur = 0, navigating = false, navT, drag = null;
+
+    function place(i) {
+        var a = links[i];
+        pill.style.width = a.offsetWidth + "px";
+        pill.style.transform = "translateX(" + a.offsetLeft + "px)";
+    }
+    function label(i) {
+        links.forEach(function (a, k) {
+            a.classList.toggle("active", k === i);
+            if (k === i) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+        });
+    }
+    function squish() {
+        if (reduce) return;
+        fill.classList.remove("squish"); void fill.offsetWidth; fill.classList.add("squish");
+    }
+    function select(i) {
+        if (i === cur) return;
+        cur = i; label(i); place(i); squish();
+    }
+    function refresh() {            /* repositionne sans animation (démarrage, redimensionnement) */
+        pill.style.transition = "none"; place(cur); void pill.offsetWidth; pill.style.transition = "";
+    }
+    function endNav() { navigating = false; spy(); }
+    function go(i) {
+        navigating = true; clearTimeout(navT); navT = setTimeout(endNav, 700);
+        select(i);
+        var b = reduce ? "auto" : "smooth";
+        if (i === 0) window.scrollTo({ top: 0, behavior: b });
+        else secs[i].scrollIntoView({ behavior: b, block: "start" });
+    }
+    function spy() {                /* la pastille suit la section visible */
+        if (navigating || drag) return;
+        var y = window.scrollY + window.innerHeight * 0.35, idx = 0;
+        secs.forEach(function (s, k) { if (s.offsetTop <= y) idx = k; });
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) idx = secs.length - 1;
+        select(idx);
+    }
+
+    links.forEach(function (a, i) {
+        a.addEventListener("click", function (e) { e.preventDefault(); go(i); });
+    });
+    window.addEventListener("scroll", function () {
+        if (navigating) { clearTimeout(navT); navT = setTimeout(endNav, 160); }
+        else spy();
+    }, { passive: true });
+
+    /* Glisser la pastille à la main */
+    nav.addEventListener("pointerdown", function (e) {
+        var x = e.clientX - nav.getBoundingClientRect().left, a = links[cur];
+        if (x < a.offsetLeft || x > a.offsetLeft + a.offsetWidth) return;   /* seulement sur la pastille */
+        drag = { sx: e.clientX, ox: a.offsetLeft, id: e.pointerId, moved: false, k: cur };
+        fill.classList.add("press");
+    });
+    nav.addEventListener("pointermove", function (e) {
+        if (!drag) return;
+        var dx = e.clientX - drag.sx;
+        if (!drag.moved) {
+            if (Math.abs(dx) < 4) return;
+            drag.moved = true; nav.setPointerCapture(drag.id);
+            pill.style.transition = "none"; fill.classList.add("drag");
+        }
+        var w = links[cur].offsetWidth, last = links[links.length - 1];
+        var min = links[0].offsetLeft, max = last.offsetLeft + last.offsetWidth - w;
+        var x = Math.max(min, Math.min(max, drag.ox + dx));
+        pill.style.transform = "translateX(" + x + "px)";
+        var c = x + w / 2, best = 0, bd = 1e9;
+        links.forEach(function (a, k) {
+            var dd = Math.abs(c - (a.offsetLeft + a.offsetWidth / 2));
+            if (dd < bd) { bd = dd; best = k; }
+        });
+        drag.k = best; label(best);                 /* l'onglet sous la pastille s'allume en direct */
+    });
+    function release() {
+        if (!drag) return;
+        var d = drag; drag = null;
+        fill.classList.remove("press", "drag");
+        pill.style.transition = "";
+        if (!d.moved) return;
+        if (d.k === cur) { label(cur); place(cur); squish(); }
+        else go(d.k);
+    }
+    nav.addEventListener("pointerup", release);
+    nav.addEventListener("pointercancel", release);
+
+    if ("ResizeObserver" in window) new ResizeObserver(refresh).observe(nav);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+    label(0); refresh(); spy();
+})();
+</script>
+<script>
+/* Bandeau de cours simulés */
+(function () {
+    var T = [["NOVA", 1284.5], ["BTC", 64210], ["OR", 2331.4], ["PÉTROLE", 78.9], ["TECH 100", 18420], ["EUR/USD", 1.0842], ["ARGENT", 28.71]];
+    var h = T.map(function (t) {
+        var c = Math.random() * 6 - 2.4, up = c >= 0;
+        return '<span class="tk">' + t[0] + ' <em>' + t[1].toLocaleString("fr-FR", { maximumFractionDigits: t[1] < 10 ? 4 : 2 }) + '</em> <b class="' + (up ? "up" : "dn") + '">' + (up ? "▲ +" : "▼ ") + c.toFixed(2).replace(".", ",") + " %</b></span>";
+    }).join("");
+    document.getElementById("tkTrack").innerHTML = h + h;
+})();
+
+/* Graphique en direct (données simulées) */
+(function () {
+    var W = 720, H = 180, N = 60, data = [], base = 1284.5;
+    var plot = document.getElementById("chPlot"), ln = document.getElementById("chLn"), ar = document.getElementById("chAr"), dot = document.getElementById("chDot");
+    var price = document.getElementById("chPrice"), chip = document.getElementById("chChip");
+    function step(p) { return p + (Math.random() - 0.47) * 6; }
+    function seed(n) { data = []; var p = base; for (var i = 0; i < n; i++) { p = step(p); data.push(p); } }
+    function draw() {
+        var lo = Math.min.apply(null, data), hi = Math.max.apply(null, data), pad = (hi - lo) * 0.15 || 1;
+        lo -= pad; hi += pad;
+        var pts = data.map(function (v, i) { return [i * W / (data.length - 1), H - (v - lo) / (hi - lo) * H]; });
+        var d = pts.map(function (q, i) { return (i ? "L" : "M") + q[0].toFixed(1) + " " + q[1].toFixed(1); }).join("");
+        ln.setAttribute("d", d); ar.setAttribute("d", d + "L" + W + " " + H + "L0 " + H + "Z");
+        var last = pts[pts.length - 1], first = data[0], now = data[data.length - 1], pct = (now / first - 1) * 100, up = pct >= 0;
+        dot.style.left = (last[0] / W * 100) + "%"; dot.style.top = (last[1] / H * 100) + "%";
+        plot.classList.toggle("dn", !up); chip.classList.toggle("dn", !up);
+        price.textContent = now.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        chip.textContent = (up ? "▲ +" : "▼ ") + pct.toFixed(2).replace(".", ",") + " %";
+    }
+    document.getElementById("chTf").addEventListener("click", function (e) {
+        var b = e.target.closest("button"); if (!b) return;
+        [].forEach.call(this.children, function (x) { x.classList.toggle("on", x === b); });
+        N = +b.dataset.n; seed(N); draw();
+    });
+    seed(N); draw();
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        setInterval(function () { data.push(step(data[data.length - 1])); data.shift(); draw(); }, 1400);
+})();
+</script>
 </body></html>
