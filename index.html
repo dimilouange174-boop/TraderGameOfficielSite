@@ -176,6 +176,38 @@ nav.dock>.logo{padding:0 14px 0 16px}
 .cd.done{display:block;text-align:center;padding:14px;border-radius:var(--r-in);background:rgba(92,242,176,.18);color:#9ff5c9;font-weight:700}
 .news-btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--gap);margin-top:20px;animation:rise 1.6s cubic-bezier(.16,1,.3,1) both}
 .news-btns[hidden]{display:none}
+.fn{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;overflow:hidden;color:#fff;text-align:center;--c:#9ff5c9}
+.fn[hidden],.fn-stage[hidden],.fn-win[hidden]{display:none}
+.fn-bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(40,20,120,.6),rgba(5,3,25,.93) 70%);-webkit-backdrop-filter:blur(26px) saturate(1.5);backdrop-filter:blur(26px) saturate(1.5);transition:background 1s;animation:fnIn .6s ease both}
+@keyframes fnIn{from{opacity:0}}
+.fn.dark .fn-bg{background:#030210}
+.fn-x{position:absolute;top:max(16px,env(safe-area-inset-top));right:16px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.14);color:#fff;font-size:18px;cursor:pointer;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.fn-stage{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:22px;padding:24px}
+.fn-top{margin:0;font-weight:700;letter-spacing:.2em;font-size:clamp(13px,3.4vw,18px);color:var(--c);text-transform:uppercase;transition:color .4s}
+.fn-ring{position:relative;width:min(72vw,360px);aspect-ratio:1;display:grid;place-items:center}
+.fn-ring svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.fn-ring circle{fill:none;stroke-width:6}.rb{stroke:rgba(255,255,255,.14)}
+.rp{stroke:var(--c);stroke-linecap:round;stroke-dasharray:578;stroke-dashoffset:0;transition:stroke-dashoffset 1s linear,stroke .4s;filter:drop-shadow(0 0 10px var(--c))}
+.fn-num{font-size:clamp(110px,34vw,230px);font-weight:800;line-height:1;letter-spacing:-.05em;font-variant-numeric:tabular-nums;text-shadow:0 0 30px var(--c),0 0 80px var(--c)}
+.fn-num.pop{animation:fnPop .9s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes fnPop{0%{transform:scale(1.9);opacity:0;filter:blur(18px)}35%{opacity:1;filter:blur(0)}60%{transform:scale(.94)}100%{transform:scale(1)}}
+.fn-wave{position:absolute;left:50%;top:50%;width:70%;aspect-ratio:1;border-radius:50%;border:3px solid var(--c);transform:translate(-50%,-50%) scale(.5);opacity:.9;pointer-events:none;animation:fnWave 1s ease-out forwards}
+@keyframes fnWave{to{transform:translate(-50%,-50%) scale(3.2);opacity:0}}
+.fn-sub{margin:0;color:var(--muted);font-size:clamp(14px,3.5vw,18px)}
+.fn.shake .fn-stage{animation:fnShake .35s linear infinite}
+@keyframes fnShake{0%,100%{transform:translate(0,0)}25%{transform:translate(calc(var(--sh)*-1px),calc(var(--sh)*1px))}50%{transform:translate(calc(var(--sh)*1px),calc(var(--sh)*-1px))}75%{transform:translate(calc(var(--sh)*-1px),calc(var(--sh)*-1px))}}
+.fn-flash{position:absolute;inset:0;z-index:4;background:#fff;opacity:0;pointer-events:none}.fn-flash.go{animation:fnFlash .9s ease-out}
+@keyframes fnFlash{0%{opacity:.95}100%{opacity:0}}
+.fn.sus .fn-num{animation:fnBeat 1.1s ease-in-out infinite;opacity:.85}
+@keyframes fnBeat{0%,100%{transform:scale(1)}15%{transform:scale(1.08)}30%{transform:scale(1)}45%{transform:scale(1.05)}}
+.fn-win{position:relative;z-index:3;width:min(560px,calc(100% - 32px));padding:36px 28px;border-radius:28px;background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);box-shadow:var(--edge);border:1px solid rgba(255,255,255,.25);display:flex;flex-direction:column;gap:16px;align-items:center;animation:fnWin .9s cubic-bezier(.2,1.3,.4,1) both}
+@keyframes fnWin{from{opacity:0;transform:translateY(40px) scale(.9)}}
+.fn-win h2{margin:0;font-size:clamp(28px,7vw,44px);letter-spacing:-.03em;line-height:1.1}.fn-win p{margin:0;color:var(--muted)}
+.fn-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;width:100%}.fn-row .cta-btn{flex:1 1 150px}
+.fn-more{background:none;border:0;color:var(--muted);font:inherit;cursor:pointer;text-decoration:underline}
+#fnFx{position:absolute;inset:0;width:100%;height:100%;z-index:5;pointer-events:none}
+.sim{position:fixed;left:12px;bottom:12px;z-index:1001;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;background:rgba(255,200,80,.25);color:#ffd36b}
+@media(prefers-reduced-motion:reduce){.fn-num.pop,.fn-wave,.fn.shake .fn-stage,.fn.sus .fn-num,.fn-flash.go,.fn-win{animation:none}}
 </style></head><body>
 <div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
 
@@ -221,11 +253,11 @@ nav.dock>.logo{padding:0 14px 0 16px}
 
         <article class="news glass">
             <span class="shine"></span>
-            <div class="news-top"><span class="tag new" id="newsTag">BIENTÔT · VERSION 1.2</span><time id="newsDate" datetime="2026-10-10">Sortie prévue pour le 10 octobre 2026</time></div>
+            <div class="news-top"><span class="tag new" id="newsTag">BIENTÔT · VERSION 1.2</span><time id="newsDate" datetime="2026-10-10T18:00:00+02:00">Sortie prévue le 10 octobre 2026 à 18h00</time></div>
             <h3>TRADER GAME <span>×</span> LIQUIDGLASS</h3>
             <p>Trader Game avec le LiquidGlass a été entièrement repensé pour la fluidité et le confort visuel.</p>
-            <p id="newsInfo">La version 1.2 est prévue pour le <b>10 octobre 2026</b>. Vous pourrez le télécharger sur Itch.io ou Mediafire le jour de la sortie.</p>
-            <div class="cd" data-date="2026-10-10T00:00:00" aria-live="off">
+            <p id="newsInfo">La version 1.2 est prévue pour le <b>10 octobre 2026 à 18h00</b> (heure de Paris). Vous pourrez le télécharger sur Itch.io ou Mediafire le jour de la sortie.</p>
+            <div class="cd" data-date="2026-10-10T18:00:00+02:00" aria-live="off">
                 <div class="cd-u"><b data-u="d">0</b><span>jours</span></div>
                 <div class="cd-u"><b data-u="h">00</b><span>heures</span></div>
                 <div class="cd-u"><b data-u="m">00</b><span>min</span></div>
@@ -275,7 +307,7 @@ nav.dock>.logo{padding:0 14px 0 16px}
 <section class="content-section" id="infos">
     <h2>Informations Techniques</h2>
     <div class="stats">
-        <div class="stat glass"><span>Version actuelle</span><b id="verNow">v1.1</b><p id="verTxt">Disponible sur Itch.io et Mediafire (APK). La v1.2 est prévue pour le 10 octobre 2026.</p></div>
+        <div class="stat glass"><span>Version actuelle</span><b id="verNow">v1.1</b><p id="verTxt">Disponible sur Itch.io et Mediafire (APK). La v1.2 est prévue pour le 10 octobre 2026 à 18h00.</p></div>
         <div class="stat glass"><span>Plateformes</span><b>PC, Téléphone &amp; Tablette</b><p>Ordinateurs, téléphones et tablettes.</p></div>
         <div class="stat glass"><span>Configuration</span><b>Légère</b><p>Fonctionne parfaitement sur tous vos appareils.</p></div>
     </div>
@@ -601,7 +633,7 @@ document.addEventListener("pointermove", function (e) {
 })();
 </script>
 <script>
-/* Apparition lente et douce des élément au défilement (en cascade) */
+/* Apparition lente et douce des éléments au défilement (en cascade) */
 (function () {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
     var groups = ["section.content-section h2", ".grid>.card", ".dev-container", ".faq-grid>.faq-item", ".stats>.stat", ".news-list>.news", ".news-contact"];
@@ -615,30 +647,107 @@ document.addEventListener("pointermove", function (e) {
     });
 })();
 </script>
+<div class="fn" id="finale" role="dialog" aria-label="Compte à rebours de la sortie" hidden>
+<div class="fn-bg"></div><button class="fn-x" id="fnX" type="button" aria-label="Fermer">✕</button><div class="fn-flash" id="fnFlash"></div><canvas id="fnFx"></canvas>
+<div class="fn-stage" id="fnStage"><p class="fn-top" id="fnTop">Sortie imminente</p>
+<div class="fn-ring" id="fnWrap"><svg viewBox="0 0 200 200" aria-hidden="true"><circle class="rb" cx="100" cy="100" r="92"/><circle class="rp" id="fnRing" cx="100" cy="100" r="92"/></svg><div class="fn-num" id="fnNum">10</div></div>
+<p class="fn-sub" id="fnSub">TRADER GAME × LIQUIDGLASS · v1.2</p></div>
+<div class="fn-win" id="fnWin" hidden><h2>🎉 La version 1.2 est là !</h2><p id="fnWinTxt">Vous pouvez l'installer dès maintenant sur Itch.io et Mediafire.</p>
+<div class="fn-row"><a href="https://dimi-louange.itch.io/trader-game" target="_blank" rel="noopener" class="cta-btn glass">Itch.io</a><a href="https://www.mediafire.com/file/gvpbcusj27zxat8/Trader_Game_4_3.apk/file" target="_blank" rel="noopener" class="cta-btn glass">Mediafire (APK)</a></div>
+<button class="fn-more" id="fnMore" type="button">Continuer vers le site</button></div></div>
 <script>
-/* Compte à rebours jusqu'à la sortie de la v1.2 (10 octobre 2026) */
+/* Compte à rebours + grand final : 10 → 0, petit suspense, puis les liens s'affichent tout seuls.
+   Pour tester sans attendre : ajoutez ?simulation à l'adresse (ex. ...html?simulation=15 pour 15 secondes). */
 (function () {
     var box = document.querySelector(".cd"); if (!box) return;
-    var end = new Date(box.getAttribute("data-date")).getTime();
+    var sim = /[?&#]simulation(?:=(\d+))?/.exec(location.search + location.hash);
+    var end = sim ? Date.now() + (+sim[1] || 14) * 1000 : new Date(box.getAttribute("data-date")).getTime();
+    var $ = function (id) { return document.getElementById(id); };
+    var fn = $("finale"), num = $("fnNum"), ring = $("fnRing"), stage = $("fnStage"), win = $("fnWin"), flash = $("fnFlash"), top = $("fnTop"), sub = $("fnSub");
+    var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     var el = {}; ["d", "h", "m", "s"].forEach(function (u) { el[u] = box.querySelector('[data-u="' + u + '"]'); });
+    var phase = 0, lastN = -1, done = false, dismissed = false, timers = [], iv;
     function pad(n) { return n < 10 ? "0" + n : "" + n; }
+    function set(id, t) { var n = $(id); if (n) n.textContent = t; }
+    function vib(p) { try { if (navigator.vibrate && !reduce) navigator.vibrate(p); } catch (e) {} }
+    function later(f, ms) { timers.push(setTimeout(f, ms)); }
+    function pop(n) { n.classList.remove("pop"); void n.offsetWidth; n.classList.add("pop"); }
+    function fire(n) { n.classList.remove("go"); void n.offsetWidth; n.classList.add("go"); }
+    if (sim) { var tg = document.createElement("div"); tg.className = "sim"; tg.textContent = "Mode simulation"; document.body.appendChild(tg); }
+
+    function applyDone() {
+        if (done) return; done = true; clearInterval(iv);
+        box.className = "cd done"; box.textContent = "La version 1.2 est disponible !";
+        var b = document.querySelector(".news-btns"); if (b) b.hidden = false;
+        set("newsTag", "DISPONIBLE · VERSION 1.2"); set("newsDate", "Sortie le 10 octobre 2026 à 18h00");
+        set("newsInfo", "La version 1.2 est disponible ! Vous pouvez l'installer dès maintenant sur Itch.io et Mediafire.");
+        set("verNow", "v1.2"); set("verTxt", "Disponible sur Itch.io et Mediafire (APK).");
+    }
+    function openFn() {
+        phase = 1; fn.hidden = false; stage.hidden = false; win.hidden = true; fn.className = "fn";
+        document.documentElement.style.overflow = "hidden";
+    }
+    function closeFn() {
+        fn.hidden = true; dismissed = true; document.documentElement.style.overflow = "";
+        timers.forEach(clearTimeout); timers = [];
+        if (end <= Date.now()) applyDone();
+    }
+    function col(n) { return n >= 6 ? "#9ff5c9" : n >= 4 ? "#ffd36b" : n === 3 ? "#ff9a5c" : "#ff5d73"; }
+    function showNum(n) {
+        num.textContent = n; pop(num);
+        fn.style.setProperty("--c", col(n));
+        ring.style.strokeDashoffset = 578 * (11 - n) / 10;           /* l'anneau se vide pendant la seconde */
+        top.textContent = n > 5 ? "Sortie imminente" : n > 3 ? "Ça approche…" : "Préparez-vous !";
+        var w = document.createElement("i"); w.className = "fn-wave";
+        w.addEventListener("animationend", function () { w.remove(); }); $("fnWrap").appendChild(w);
+        if (n <= 5) { fn.classList.add("shake"); fn.style.setProperty("--sh", (6 - n) * 1.6); }
+        vib(n <= 3 ? 70 : 20);
+    }
+    function zero() {
+        phase = 2; fn.classList.remove("shake"); fn.style.setProperty("--c", "#fff");
+        num.textContent = "0"; pop(num); ring.style.strokeDashoffset = 578; fire(flash);
+        top.textContent = "Lancement"; sub.textContent = "TRADER GAME × LIQUIDGLASS · v1.2"; vib(200);
+        later(function () { phase = 3; fn.classList.add("dark", "sus"); top.textContent = "…"; sub.textContent = "Un dernier instant…"; }, reduce ? 300 : 900);
+        later(reveal, reduce ? 1200 : 3300);
+    }
+    function reveal() {
+        phase = 4; fn.classList.remove("dark", "sus"); stage.hidden = true; win.hidden = false;
+        fire(flash); confetti(); applyDone(); vib([80, 60, 80, 60, 200]);
+    }
+    function confetti() {
+        if (reduce) return;
+        var c = $("fnFx"), x = c.getContext("2d"), W = c.width = innerWidth, H = c.height = innerHeight, P = [], C = ["#9ff5c9", "#7ec8ff", "#ffd36b", "#ff9fb0", "#c9a7ff", "#fff"];
+        for (var i = 0; i < 180; i++) {
+            var a = Math.random() * Math.PI * 2, v = 5 + Math.random() * 12;
+            P.push({ x: W * (i % 2 ? .25 : .75), y: H * .6, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 9, r: 3 + Math.random() * 5, c: C[i % 6], t: Math.random() * 6, w: (Math.random() - .5) * .4 });
+        }
+        var st = performance.now();
+        (function f(ts) {
+            var k = ts - st; x.clearRect(0, 0, W, H);
+            P.forEach(function (p) { p.vy += .35; p.vx *= .992; p.x += p.vx; p.y += p.vy; p.t += p.w; x.save(); x.globalAlpha = Math.max(0, 1 - k / 4200); x.translate(p.x, p.y); x.rotate(p.t); x.fillStyle = p.c; x.fillRect(-p.r, -p.r / 2, p.r * 2, p.r); x.restore(); });
+            if (k < 4200) requestAnimationFrame(f); else x.clearRect(0, 0, W, H);
+        })(st);
+    }
     function tick() {
         var t = end - Date.now();
-        if (t <= 0) {
-            box.className = "cd done"; box.textContent = "La version 1.2 est disponible !";
-            var b = document.querySelector(".news-btns"); if (b) b.hidden = false;
-            function set(id, t) { var n = document.getElementById(id); if (n) n.textContent = t; }
-            set("newsTag", "DISPONIBLE · VERSION 1.2"); set("newsDate", "Sortie le 10 octobre 2026");
-            set("newsInfo", "La version 1.2 est disponible ! Téléchargez-la sur Itch.io ou Mediafire.");
-            set("verNow", "v1.2"); set("verTxt", "Disponible sur Itch.io et Mediafire (APK).");
-            clearInterval(iv); return;
+        if (t > 0) {
+            var s = Math.floor(t / 1000);
+            el.d.textContent = Math.floor(s / 86400); el.h.textContent = pad(Math.floor(s % 86400 / 3600));
+            el.m.textContent = pad(Math.floor(s % 3600 / 60)); el.s.textContent = pad(s % 60);
+            if (t <= 10000 && !dismissed && phase < 2 && !done) {
+                if (phase === 0) openFn();
+                var n = Math.ceil(t / 1000); if (n !== lastN) { lastN = n; showNum(n); }
+            }
+            return;
         }
-        var s = Math.floor(t / 1000);
-        el.d.textContent = Math.floor(s / 86400); el.h.textContent = pad(Math.floor(s % 86400 / 3600));
-        el.m.textContent = pad(Math.floor(s % 3600 / 60)); el.s.textContent = pad(s % 60);
+        if (phase === 0 || dismissed) { applyDone(); return; }
+        if (phase === 1) { if (-t > 3000) { closeFn(); applyDone(); } else zero(); }   /* onglet resté en arrière-plan : pas de rejeu tardif */
     }
-    var iv = setInterval(tick, 1000); tick();
+    $("fnX").onclick = closeFn; $("fnMore").onclick = closeFn;
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !fn.hidden) closeFn(); });
+    iv = setInterval(tick, 200); tick();
     document.addEventListener("visibilitychange", function () { if (!document.hidden) tick(); });
 })();
 </script>
 </body></html>
+  
